@@ -1,0 +1,17 @@
+{
+  "name": "00_restfull_api",
+  "version": "1.0.0",
+  "description": "Just a basic restfull api",
+  "license": "ISC",
+  "author": "Tayyab",
+  "type": "commonjs",
+  "main": "mongooseDBCode.js",
+  "scripts": {
+    "start": "node mongooseDBCode.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5",
+    "nodemon": "^3.1.11"
+  }
+}
