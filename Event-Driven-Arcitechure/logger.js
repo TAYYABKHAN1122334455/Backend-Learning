@@ -1,30 +1,30 @@
 const fs = require('fs');
 const os = require('os');
-const EventEmitter = require('events');
+const EventEmitter=require('events');
 
 class Logger extends EventEmitter{
     log(message){
         this.emit("message",{message});
     }
 }
-
 const logger=new Logger();
-const logFile="./logFile.txt";
+const filePath="./loggerData.txt";
 
-// LISTENER REGISTER
-logger.on("message",(event)=>{
-    const logMessage=`${new Date().toISOString()} - ${event.message}\n`;
+const fileLog=(event)=>{
+    const logMessage=`${new Date().toISOString()} - ${event.message}\n`
+    fs.appendFile(filePath,logMessage,(err)=>{
+        if(err){
+            console.log("Error Message",err);
+        }
+    })
+}
+logger.on("message",fileLog);
 
-    fs.appendFile(logFile,logMessage,(error)=>{
-        if(error) console.log(error);
-    });
-});
-
-// EMIT EVENTS
-logger.log("Application Started");
-logger.log("Application Event Occured");
 
 setInterval(()=>{
-    const memory=((os.totalmem()-os.freemem())/os.totalmem())*100;
-    console.log("Current Memory Usage:",memory.toFixed(2));
-},3000);
+    const memoryUsage=((os.totalmem()-os.freemem())/os.totalmem())*100;
+    logger.log(`Current Memory usage: ${memoryUsage.toFixed(2)}%`);
+},3000)
+
+logger.log("Application Started!");
+logger.log("Application event occured");
