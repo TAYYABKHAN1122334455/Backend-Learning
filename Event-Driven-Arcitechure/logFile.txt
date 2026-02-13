@@ -1,0 +1,4 @@
+2026-02-13T15:29:02.590Z - Application Started
+2026-02-13T15:29:02.590Z - Application Event Occured
+2026-02-13T15:29:36.510Z - Application Started
+2026-02-13T15:29:36.510Z - Application Event Occured
