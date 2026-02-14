@@ -1,0 +1,21 @@
+{
+  "name": "project_management",
+  "version": "1.0.0",
+  "description": "A project management system for me",
+  "keywords": [
+    "backend",
+    "API",
+    "health",
+    "check"
+  ],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "devDependencies": {
+    "prettier": "3.8.1"
+  }
+}
