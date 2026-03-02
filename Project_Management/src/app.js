@@ -15,10 +15,13 @@ app.use(
     methods:["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
     allowedHeaders:["Content-Type","Authorization"]
   }))
+// import the routes
+
+import healthcheckRouter from './routes/healthcheck.routes.js';
+
+app.use("/api/v1/healthcheck", healthcheckRouter)
 app.get("/",(req,res)=>{
     res.send("Welcome to '/' page.");
 });
-app.get("/instagram", (req, res) => {
-  res.send("This is an Insta page.");
-});
+
 export default app;
