@@ -28,6 +28,7 @@
     "mailgen": "^2.0.32",
     "mongodb": "^7.1.0",
     "mongoose": "^9.2.1",
+    "nodemailer": "^8.0.1",
     "nodemon": "^3.1.11"
   }
 }
