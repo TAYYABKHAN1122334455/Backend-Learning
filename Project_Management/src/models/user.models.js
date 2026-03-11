@@ -1,4 +1,4 @@
-import mongoose,{Schema, Schema} from "mongoose";
+import mongoose,{Schema} from "mongoose";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
@@ -61,13 +61,12 @@ const userSchema =new Schema(
         timestamps:true,
     }
 )
-userSchema.pre("save",async function(next){
-if(!this.isModified("password")) return next();
+userSchema.pre("save",async function(){
+if(!this.isModified("password")) return ;
 //Salt isi leya banaya ha k achi security ka leya matlab: same password ka leya different HASH jo ga.12345=diff hash and 12345=diff hash and then security increases
 
     const salt=await bcrypt.genSalt(10);
     this.password=await bcrypt.hash(this.password,salt);
-    next();
 });
 userSchema.methods.isPasswordCorrect=async function(password){
     return bcrypt.compare(password,this.password);
@@ -102,8 +101,7 @@ userSchema.methods.generateTemporaryToken=function(){
    const hashedToken=crypto.createHash("sha256").update(unHashToken).digest("hex")
 
    const tokenExpiry=Date.now() + (20*60*1000)//20 mins
-   return
-   {
+   return{
     unHashToken,
     hashedToken,
     tokenExpiry
